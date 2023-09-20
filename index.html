@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today's Binary Date</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        #binary-calendar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        .binary-date {
+            width: 200px;
+            padding: 20px;
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Today's Binary Date</h1>
+    <div id="binary-calendar"></div>
+    <p>Today's Date in Binary</p>
+
+    <script>
+        function decimalToBinary(decimal) {
+            return (decimal >>> 0).toString(2);
+        }
+
+        const currentDate = new Date();
+        const currentYear = currentDate.getFullYear();
+        const currentMonth = currentDate.getMonth() + 1;
+        const currentDay = currentDate.getDate();
+
+        const binaryYear = decimalToBinary(currentYear);
+        const binaryMonth = decimalToBinary(currentMonth);
+        const binaryDay = decimalToBinary(currentDay);
+
+        const binaryCalendar = document.getElementById('binary-calendar');
+        binaryCalendar.innerHTML += `<div class="binary-date">Year: ${binaryYear}</div>`;
+        binaryCalendar.innerHTML += `<div class="binary-date">Month: ${binaryMonth}</div>`;
+        binaryCalendar.innerHTML += `<div class="binary-date">Day: ${binaryDay}</div>`;
+    </script>
+</body>
+</html>
